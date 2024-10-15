@@ -1,0 +1,1 @@
+A ideia de projeto é criar um CRUD 100% voltado para o gerenciamento de usuários (nível de acesso de funcionários, clientes cadastrados, clientes acessando o sistemas e oportunidade de personalizar o que vai ser usado do sistemas/módulos)
