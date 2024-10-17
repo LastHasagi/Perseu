@@ -3,9 +3,10 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+
 DATABASE = 'db/users.db'
 
-# Garantir exisência do banco de dados
+# Garantir exisência do banco de dados antes de iniciar o servidor
 def init_db():
     with sqlite3.connect(DATABASE) as conn:
         cursor = conn.cursor()
@@ -13,8 +14,9 @@ def init_db():
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             username TEXT UNIQUE NOT NULL,
                             password TEXT NOT NULL)''')
-        conn.commit()
-        
+        conn.commit()       
+init_db()
+
 # <----- Páginas do sistema ----->
 
 # Página de login/registro
