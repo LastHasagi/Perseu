@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Login Prime</title>
+    <title>Perseu System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,7 +32,7 @@
                             </div>
                         {% endif %}
                     {% endwith %}
-                    <form method="post" action="{{ url_for('login') }}">
+                    <form id="loginForm" method="post" action="{{ url_for('login') }}">
                         <div class="form-group">
                             <label for="nome">Nome de Usuário</label>
                             <input type="text" class="form-control" id="nome" name="nome" required>
@@ -38,7 +43,22 @@
                         </div>
                         <div class="form-group d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Entrar</button>
-                            <a href="https://sbacem-helpdesk.freshdesk.com/support/tickets/new" class="btn btn-secondary">Esqueceu sua senha?</a>
+                            <a class="btn btn-secondary" id="registerButton">Cadastre-se</a>
+                        </div>
+                    </form>
+                    <form id="registerForm" class="hidden" method="post" action="{{ url_for('register') }}">
+                        <h2 class="text-center mt-3">Cadastro</h2>
+                        <div class="form-group">
+                            <label for="registerNome">Nome de Usuário</label>
+                            <input type="text" class="form-control" id="registerNome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerSenha">Senha</label>
+                            <input type="password" class="form-control" id="registerSenha" name="senha" required>
+                        </div>
+                        <div class="form-group d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <a class="btn btn-secondary" id="loginButton">Voltar ao Login</a>
                         </div>
                     </form>
                 </div>
@@ -48,5 +68,16 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('registerButton').addEventListener('click', function() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.remove('hidden');
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
