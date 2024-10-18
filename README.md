@@ -39,7 +39,7 @@ Você vai poder acessar (http://127.0.0.1:5001) para interagir com a aplicação
 
 Para testar a api separadamente, baixe o Postman e execute da seguinte forma:
 
-- GET: http://127.0.0.1:5001/api/user --> Envie uma solicitação GET com o parâmetro "None" para retornar um JSON com todos os usuários que temos salvos no DB.
+- GET: http://127.0.0.1:5001/api/users --> Envie uma solicitação GET com o parâmetro "None" para retornar um JSON com todos os usuários que temos salvos no DB.
 
 - POST: http://127.0.0.1:5001/api/register --> Envie um JSON no "Body" para registrar seu usuário.
 ```json
