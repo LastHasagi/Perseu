@@ -1,0 +1,45 @@
+/* user page */
+/* Made by: Rodrigo Graça (https://github.com/LastHasagi) */
+
+body {
+    background-image: url('../images/users_bg.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%; 
+    max-width: 800px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    color: #ffffff; 
+    text-align: center;
+}
+
+table {
+    color: #ffffff; 
+    width: 100%;
+    margin-top: 20px;
+    table-layout: fixed; /* Ensure table layout is fixed */
+}
+
+table th, table td {
+    color: #ffffff; 
+    text-align: center;
+    vertical-align: middle; /* Center text vertically */
+    word-wrap: break-word; /* Allow text to wrap within cells */
+    white-space: normal; /* Allow text to wrap within cells */
+    max-width: 200px; /* Set a maximum width for table cells */
+}

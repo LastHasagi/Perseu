@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Perseu System | Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Lista de Usuários</h2>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Nome de Usuário</th>
+                    <th>Senha</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- User data will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/users')
+                .then(response => response.json())
+                .then(data => {
+                    const usersTableBody = document.getElementById('usersTableBody');
+                    data.forEach(user => {
+                        const row = document.createElement('tr');
+                        const usernameCell = document.createElement('td');
+                        const passwordCell = document.createElement('td');
+                        usernameCell.textContent = user.username;
+                        passwordCell.textContent = user.password;
+                        row.appendChild(usernameCell);
+                        row.appendChild(passwordCell);
+                        usersTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+        });
+    </script>
+</body>
+</html>

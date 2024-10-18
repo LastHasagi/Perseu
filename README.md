@@ -1,1 +1,56 @@
-A ideia de projeto é criar um CRUD 100% voltado para o gerenciamento de usuários (nível de acesso de funcionários, clientes cadastrados, clientes acessando o sistemas e oportunidade de personalizar o que vai ser usado do sistemas/módulos)
+# Projeto: Perseu
+
+## Descrição
+Este projeto é uma aplicação desenvolvida para cumprir o desafio proposto pela Tributo devido. 
+Ele foi criado para criar uma api + render de template html que cadastre, faça login e envie informções para os users e utiliza Python, HTML, CSS, JS e SQlite.
+
+## Estrutura do Projeto
+- **/**: Contém o código-fonte da aplicação.
+    - **db/**: Banco de dados.
+    - **templates/**: Arquivos HTML.
+    - **static/**: Arquivos CSS e JS.
+
+## Instalação
+1. Clone o repositório:
+     ```sh
+     git clone https://github.com/LastHasagi/perseu.git
+     ```
+2. Navegue até o diretório do projeto:
+     ```sh
+     cd Perseu
+     ```
+3. Ative o venv
+    ```sh
+    Python -m venv venv
+    ```
+4. Instale as dependências:
+     ```sh
+     pip install -r requirements.txt
+     ```
+
+## Uso
+Para iniciar a aplicação, execute:
+```sh
+python servidor.py
+```
+Você vai poder acessar (http://127.0.0.1:5001) para interagir com a aplicação. 
+
+Para testar a api separadamente, baixe o Postman e execute da seguinte forma:
+
+- GET: http://127.0.0.1:5001/api/user --> Envie uma solicitação GET com o parâmetro "None" para retornar um JSON com todos os usuários que temos salvos no DB.
+
+- POST: http://127.0.0.1:5001/api/register --> Envie um JSON no "Body" para registrar seu usuário.
+```json
+{
+    "username": "new_user",
+    "password": "new_password"
+}
+```
+
+- POST: http://127.0.0.1:5001/api/login --> Envie um JSON no "Body" para efetuar o login.
+```json
+{
+    "username": "my_user",
+    "password": "my_password"
+}
+```

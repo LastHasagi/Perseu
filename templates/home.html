@@ -13,6 +13,7 @@
             <div class="front">
                 <div class="login-container">
                     <h2 class="text-center mt-3">Login</h2>
+                    <!-- Flash message section -->
                     {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                             <div class="mt-3">
@@ -27,14 +28,14 @@
                             </div>
                         {% endif %}
                     {% endwith %}
-                    <form method="post" action="{{ url_for('login') }}">
+                    <form id="loginForm">
                         <div class="form-group">
-                            <label for="nome">Nome de Usuário</label>
-                            <input type="text" class="form-control" id="nome" name="nome" required>
+                            <label for="username">Nome de Usuário</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="form-group">
-                            <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" name="senha" required>
+                            <label for="password">Senha</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="form-group d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Entrar</button>
@@ -46,7 +47,7 @@
             <div class="back">
                 <div class="login-container">
                     <h2 class="text-center mt-3">Cadastro</h2>
-                    <form method="post" action="{{ url_for('register') }}">
+                    <form id="registerForm">
                         <div class="form-group">
                             <label for="registerNome">Nome de Usuário</label>
                             <input type="text" class="form-control" id="registerNome" name="username" required>
@@ -74,6 +75,49 @@
 
         document.getElementById('loginButton').addEventListener('click', function() {
             document.querySelector('.flip-container').classList.remove('flip');
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert(data.message);
+                }
+            });
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('registerNome').value;
+            const password = document.getElementById('registerSenha').value;
+
+            fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message === 'Usuário registrado com sucesso') {
+                    document.querySelector('.flip-container').classList.remove('flip');
+                }
+            });
         });
     </script>
 </body>
