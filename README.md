@@ -2,7 +2,8 @@
 
 ## Descrição
 Este projeto é uma aplicação desenvolvida para cumprir o desafio proposto pela Tributo devido. 
-Ele foi criado para criar uma api + render de template html que cadastre, faça login e envie informções para os users e utiliza Python, HTML, CSS, JS e SQlite.
+Consiste em uma api + render de template html que cadastre, faça login e consulte informações sobre os usuários. 
+Utilizei Python, HTML, CSS, JS e SQlite.
 
 ## Estrutura do Projeto
 - **/**: Contém o código-fonte da aplicação.
@@ -22,6 +23,7 @@ Ele foi criado para criar uma api + render de template html que cadastre, faça 
 3. Ative o venv
     ```sh
     Python -m venv venv
+    ./venv/Scripts/Activate
     ```
 4. Instale as dependências:
      ```sh
