@@ -13,7 +13,7 @@ Ele foi criado para criar uma api + render de template html que cadastre, faça 
 ## Instalação
 1. Clone o repositório:
      ```sh
-     git clone https://github.com/LastHasagi/perseu.git
+     git clone https://github.com/LastHasagi/Perseu.git
      ```
 2. Navegue até o diretório do projeto:
      ```sh
